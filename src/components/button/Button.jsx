@@ -11,7 +11,7 @@ export default function Button(props) {
 
   return (
     <button
-      className="button active"
+      className={props.isActive ? 'button active' : 'button'}
       onClick={props.functionClick}
       onMouseLeave={mouseLeave}
       onMouseEnter={mouseEnter}
