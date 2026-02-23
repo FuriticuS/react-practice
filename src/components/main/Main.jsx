@@ -3,13 +3,16 @@ import Button from "../button/Button.jsx";
 import InfoBlock from "../info/InfoBlock.jsx";
 import Intro from "../intro/Intro.jsx";
 import {difference, info} from '../../assets/info/info.jsx'
+import TabNavigation from "../navigation/TabNavigation.jsx";
+import Feedback from "../feedback/FeedBack.jsx";
 
 export default function Main() {
+  const [tab, setTab] = useState('main')
   const [textButtonType, setTextButtonType] = useState(null);
 
-  let tubContent = null;
+  let tabContent = null;
   if (textButtonType) {
-    tubContent = <p>Текст кнопки {textButtonType}</p>
+    tabContent = <p>Текст кнопки {textButtonType}</p>
   }
 
   const handleClick = (type) => {
@@ -17,27 +20,31 @@ export default function Main() {
     setTextButtonType(type);
   }
 
-  return(
+  return (
     <main>
       <h1>Hello React</h1>
 
-      <Intro />
+      <TabNavigation active={tab} onChange={(current)=> setTab(current)}/>
 
-      <Button
-        isActive={textButtonType === difference.way}
-        title="Доступность"
-        functionClick={() => handleClick(difference.way)}/>
-      <Button
-        isActive={textButtonType === difference.go}
-        functionClick={() => handleClick(difference.go)}>Популярность</Button>
+      {tab === "main" && (<>
+        <Intro/>
 
-      {/*{ textButtonType ? <p>Текст кнопки {textButtonType}</p> : null }*/}
+        <Button
+          isActive={textButtonType === difference.way}
+          title="Доступность"
+          functionClick={() => handleClick(difference.way)}/>
+        <Button
+          isActive={textButtonType === difference.go}
+          functionClick={() => handleClick(difference.go)}>Популярность</Button>
 
-      {tubContent}
+        {/*{ textButtonType ? <p>Текст кнопки {textButtonType}</p> : null }*/}
 
-      <InfoBlock info={info}/>
+        {tabContent}
 
+        <InfoBlock info={info}/>
+      </>)}
 
+      {tab === 'feedback' && <Feedback/>}
     </main>
   )
 }
