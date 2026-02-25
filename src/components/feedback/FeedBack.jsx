@@ -1,6 +1,16 @@
 import Button from "../button/Button.jsx";
+import {useState} from "react";
 
 export default function Feedback() {
+  const [name, setName] = useState('');
+  const [reason, setReason] = useState('error');
+  const [hasError, setHasError] = useState(false);
+
+  function handleNameShange(event) {
+    const name = event.target.value
+    setName(name);
+    setHasError(name.trim().length === 0);
+  }
 
   return (
     <div>
@@ -8,17 +18,30 @@ export default function Feedback() {
 
       <form>
         <label htmlFor="name">ФИО</label>
-        <input type="text" id="name"/>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          style={{
+            border: hasError ? '1px solid red' : null
+          }}
+          onChange={handleNameShange}
+        />
 
         <label htmlFor="reason">Причина обращения</label>
-        <select id="reason">
+        <select
+          id="reason"
+          value={reason}
+          onChange={event => setReason(event.target.value)}>
           <option value="error">Ошибка</option>
           <option value="help">Нужна помощь</option>
           <option value="suggest">Предложение</option>
         </select>
 
-        <Button title="Отправить"/>
+        <Button title="Отправить" disabled={hasError} isActive={!hasError}/>
       </form>
+
+      <pre>ФИО:{name} <br/>Селект:{reason}</pre>
     </div>
   )
 }

@@ -1,6 +1,13 @@
 import './button.css'
 
 export default function Button(props) {
+  const { functionClick,
+    isActive,
+    title,
+    children,
+    className,
+    ...rest} = props
+
   function mouseLeave() {
     console.log(111);
   }
@@ -11,12 +18,13 @@ export default function Button(props) {
 
   return (
     <button
-      className={props.isActive ? 'button active' : 'button'}
-      onClick={props.functionClick}
+      {...rest}
+      className={`button ${isActive ? 'active' : ''} ${className ?? ''}`.trim()}
+      onClick={functionClick}
       onMouseLeave={mouseLeave}
       onMouseEnter={mouseEnter}
       onDoubleClick={() => console.log('double click')}>
-      {props.title || props.children}
+      {title || children}
     </button>
   )
 }
