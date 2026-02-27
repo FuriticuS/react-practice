@@ -9,7 +9,7 @@ import Contacts from "../contacts/Contacts.jsx";
 import EffectsManual from "../effects-manual/EffectsManual.jsx";
 
 export default function Main() {
-  const [tab, setTab] = useState('main')
+  const [tab, setTab] = useState('effects')
   const [textButtonType, setTextButtonType] = useState(null);
 
   let tabContent = null;

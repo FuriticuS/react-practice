@@ -8,21 +8,21 @@ export default function Button(props) {
     className,
     ...rest} = props
 
-  function mouseLeave() {
-    console.log(111);
-  }
-
-  const mouseEnter = () => {
-    console.log('mouse enter');
-  }
+  // function mouseLeave() {
+  //   console.log(111);
+  // }
+  //
+  // const mouseEnter = () => {
+  //   console.log('mouse enter');
+  // }
 
   return (
     <button
       {...rest}
       className={`button ${isActive ? 'active' : ''} ${className ?? ''}`.trim()}
       onClick={functionClick}
-      onMouseLeave={mouseLeave}
-      onMouseEnter={mouseEnter}
+      // onMouseLeave={mouseLeave}
+      // onMouseEnter={mouseEnter}
       onDoubleClick={() => console.log('double click')}>
       {title || children}
     </button>

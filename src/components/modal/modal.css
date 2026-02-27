@@ -1,0 +1,12 @@
+dialog {
+  width: 400px;
+  height: fit-content;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
