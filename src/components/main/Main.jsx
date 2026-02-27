@@ -5,6 +5,8 @@ import Intro from "../intro/Intro.jsx";
 import {difference, info} from '../../assets/info/info.jsx'
 import TabNavigation from "../navigation/TabNavigation.jsx";
 import Feedback from "../feedback/FeedBack.jsx";
+import Contacts from "../contacts/Contacts.jsx";
+import EffectsManual from "../effects-manual/EffectsManual.jsx";
 
 export default function Main() {
   const [tab, setTab] = useState('main')
@@ -45,6 +47,10 @@ export default function Main() {
       </>)}
 
       {tab === 'feedback' && <Feedback/>}
+
+      {tab === 'contacts' && <Contacts />}
+
+      {tab === 'effects' && <EffectsManual />}
     </main>
   )
 }

@@ -13,6 +13,16 @@ export default function TabNavigation(props) {
         functionClick={() => props.onChange('feedback')}>
         Обратная связь
       </Button>
+      <Button
+        isActive={props.active === 'contacts'}
+        functionClick={() => props.onChange('contacts')}>
+        Контакты
+      </Button>
+      <Button
+        isActive={props.active === 'effects'}
+        functionClick={() => props.onChange('effects')}
+        title="Эффекты"
+      />
     </div>
   )
 }

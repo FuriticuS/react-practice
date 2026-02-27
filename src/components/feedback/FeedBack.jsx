@@ -8,13 +8,19 @@ export default function Feedback() {
 
   function handleNameShange(event) {
     const name = event.target.value
-    setName(name);
+    setName(name.trim());
     setHasError(name.trim().length === 0);
+  }
+
+  function toggleError() {
+    setHasError((prev) => !prev);
   }
 
   return (
     <div>
       <h3>Обратная связь</h3>
+
+      <Button functionClick={toggleError}>Toggle Error</Button>
 
       <form>
         <label htmlFor="name">ФИО</label>
